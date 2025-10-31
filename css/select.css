@@ -1,0 +1,1890 @@
+/* ===========================
+   EXISTING TABLE & BUTTONS
+   =========================== */
+
+.data-table {
+  width: 100%;
+  border-collapse: separate; /* use separate so cell spacing looks airy */
+  border-spacing: 0 6px;     /* vertical gutter between rows */
+  margin: 12px 0 40px 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #f0f2f5;
+  padding: 12px 14px; /* larger padding for readability */
+  vertical-align: middle;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(16,24,40,0.02);
+}
+
+.data-table th {
+  background-color: #fbfbfc;
+  color: #374151;
+  font-weight: 700;
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.button-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Update run button styling to match submit button */
+.run-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.run-button:hover {
+  background-color: #45a049;
+}
+
+.logout-button {
+  position: absolute;
+  right: 20px;
+  top: 15px; /* Moved up from 20px */
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+/* Status column and indicators */
+.status-cell {
+  width: 40px;
+  text-align: center;
+}
+
+.status-indicator {
+  color: #dc3545; /* Red color for X */
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Row run buttons */
+.run-button-cell {
+  padding: 5px;
+  text-align: center;
+}
+
+.row-run-btn {
+  padding: 4px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  height: 32px; /* Match table row height */
+  white-space: nowrap;
+}
+
+.row-run-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.row-run-btn:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+/* Layout helpers */
+.table-container {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.run-buttons-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 45px 10px 0 0; /* Top padding to align with table rows */
+}
+
+/* TYDEX buttons */
+.tydex-btn {
+  padding: 4px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  height: 32px;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+
+.tydex-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.tydex-btn:hover:not(:disabled) {
+  background-color: #218838 !important;
+}
+
+/* Teal color for Open File button state */
+.tydex-btn.open-file {
+  background-color: #228496;
+}
+
+.tydex-btn.open-file:hover {
+  background-color: #1e7085 !important;
+}
+
+.tydex-button-cell {
+  padding: 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* ===========================
+   COMPLETED-PROJECT ACTION BAR
+   =========================== */
+
+/* Container that appears only in archived/completed mode (inserted by JS) */
+.archived-toolbar {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.18), 0 2px 6px rgba(17, 24, 39, 0.08);
+  z-index: 1000;
+  border: 1px solid rgba(88, 44, 124, 0.12); /* subtle tie-in with brand purple */
+}
+
+/* Spacer to push items to edges if needed */
+.archived-spacer {
+  flex: 1;
+}
+
+/* Icon button style used in the bar */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 1;
+  color: #1f2937; /* gray-800 */
+  background: #f9fafb; /* gray-50 */
+  border: 1px solid #e5e7eb; /* gray-200 */
+  border-radius: 10px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
+  text-decoration: none;
+  user-select: none;
+}
+
+.btn-icon i {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Primary emphasis (e.g., Back) */
+.btn-icon.primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, #6b3a9b, #582C7C);
+  border-color: transparent;
+}
+
+.btn-icon:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(31, 41, 55, 0.12);
+  background-color: #f3f4f6;
+}
+
+.btn-icon.primary:hover {
+  box-shadow: 0 8px 20px rgba(88, 44, 124, 0.35);
+}
+
+/* Danger/brand accent if you ever add a destructive action */
+.btn-icon.danger {
+  color: #fff;
+  background: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-icon.danger:hover {
+  box-shadow: 0 8px 20px rgba(220, 53, 69, 0.35);
+}
+
+/* Make text optional on small screens: icons-only */
+@media (max-width: 768px) {
+  .archived-toolbar {
+    right: 12px;
+    left: auto;
+    transform: none;
+    bottom: 12px;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+  .btn-icon {
+    padding: 10px;
+    border-radius: 12px;
+  }
+  .btn-icon .btn-text {
+    display: none; /* hide labels -> icons-only */
+  }
+}
+
+/* ===========================
+   OPTIONAL: FLOATING STACK (ALT LAYOUT)
+   If you prefer a vertical speed-dial instead of the bottom bar,
+   wrap each .btn-icon with .fab-item and place them inside .archived-floating.
+   Keep both blocks; you can use either from the DOM.
+   =========================== */
+
+.archived-floating {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.fab-item {
+  position: relative;
+}
+
+.fab-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #6b3a9b, #582C7C);
+  color: #fff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(88, 44, 124, 0.35), 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.fab-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(88, 44, 124, 0.38), 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.fab-tooltip {
+  position: absolute;
+  right: 56px; /* show to the left of the button */
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: #111827;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.fab-item:hover .fab-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ---------- Inputs modal (legible labels/values) ---------- */
+.inputs-modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(17, 24, 39, 0.45);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1100;
+}
+
+.inputs-modal {
+  width: min(880px, 92vw);
+  max-height: 80vh;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(17, 24, 39, 0.25);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+
+.inputs-modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 16px;
+  background: linear-gradient(180deg, #faf7fc, #ffffff);
+  border-bottom: 1px solid #eee7f4;
+}
+
+.inputs-title {
+  font-weight: 700; color: #1f2937; font-size: 18px;
+}
+.inputs-proto { color: #6b3a9b; font-weight: 600; }
+
+.inputs-actions { display: flex; gap: 10px; }
+.inputs-actions button {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid #e5e7eb; background: #f9fafb; color: #111827;
+  padding: 8px 12px; border-radius: 10px; cursor: pointer;
+  transition: background .15s ease, box-shadow .15s ease;
+  font-size: 14px;
+}
+.inputs-actions button i { font-size: 14px; }
+.inputs-actions button:hover { background: #f3f4f6; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+.inputs-actions .inputs-copy.copied { background: #e7f7ef; border-color: #34d399; color: #065f46; }
+
+.inputs-grid {
+  padding: 8px 16px 16px;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 18px;
+}
+
+.inputs-row {
+  display: contents; /* let label and value occupy the two columns */
+}
+.inputs-label {
+  font-weight: 600; color: #374151; background: #fafafa;
+  border: 1px solid #eee; border-radius: 8px;
+  padding: 10px 12px;
+}
+.inputs-value {
+  color: #111827; border: 1px solid #eee; border-radius: 8px;
+  padding: 10px 12px; background: #fff;
+  word-break: break-word;
+}
+
+.inputs-empty {
+  grid-column: 1 / -1;
+  color: #6b7280; padding: 12px;
+}
+
+/* Mobile: stack into one column */
+@media (max-width: 640px) {
+  .inputs-grid { grid-template-columns: 1fr; }
+  .inputs-label, .inputs-value { border-radius: 10px; }
+}
+
+/* ---------- Page spacing & header ---------- */
+/* ----------------------------
+   Increase vertical spacing around
+   protocol title and total-time card
+   ---------------------------- */
+.protocol-row {
+  /* more space above and below header row so title & total-time breathe */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 30px 18px 24px 18px; /* increased top + bottom padding */
+  margin-top: 12px;             /* extra gap from top content */
+  margin-bottom: 14px;          /* gap before the table */
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(246,247,249,0.8), rgba(255,255,255,0.6));
+  border-bottom: none; /* removed the thin line under the title */
+}
+
+.protocol-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 18px;           /* nudged down slightly to align with increased padding */
+  margin: 0;
+  font-size: 24px;
+  color: #582C7C;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+  z-index: 3;
+  width: calc(100% - 260px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.1;
+  padding-top: 4px;    /* subtle internal breathing for the title */
+}
+
+/* move total card slightly away from top and give it a little extra vertical breathing */
+.total-time {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px; /* slightly larger padding for visual weight */
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(99,102,241,0.12);
+  box-shadow: 0 8px 22px rgba(14,30,80,0.06);
+}
+
+/* Responsive adjustments to preserve spacing on small screens */
+@media (max-width: 900px) {
+  .protocol-row {
+    padding: 22px 14px 18px 14px; /* keep smaller but still roomy */
+    margin-top: 10px;
+    margin-bottom: 12px;
+  }
+  .protocol-title { width: calc(100% - 180px); top: 12px; font-size: 20px; }
+  .total-time { right: 12px; padding: 10px 14px; }
+}
+
+@media (max-width: 640px) {
+  .protocol-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 16px 12px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+  }
+  .protocol-title { position: static; transform: none; width: 100%; top: auto; font-size: 20px; pointer-events: auto; }
+  .total-time { position: static; transform: none; justify-content: flex-end; width: 100%; padding: 10px 12px; }
+}
+
+/* ---------- Table area spacing ---------- */
+.table-area {
+  padding: 18px;
+}
+
+/* increase table breathing room */
+.data-table {
+  width: 100%;
+  border-collapse: separate; /* use separate so cell spacing looks airy */
+  border-spacing: 0 6px;     /* vertical gutter between rows */
+  margin: 12px 0 40px 0;
+  background: transparent;
+  overflow: visible;
+}
+
+/* cells */
+.data-table th,
+.data-table td {
+  border: 1px solid #f0f2f5;
+  padding: 12px 14px; /* larger padding for readability */
+  vertical-align: middle;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(16,24,40,0.02);
+}
+
+/* header row look */
+.data-table th {
+  background-color: #fbfbfc;
+  color: #374151;
+  font-weight: 700;
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 13px;
+}
+
+/* round row cells slightly and separate rows visually */
+.data-table tbody tr td {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* increase row height for better click targets */
+.data-table tbody tr {
+  height: 54px;
+}
+
+/* align Run/Tydex columns to center */
+.run-button-cell,
+.tydex-button-cell,
+.status-cell {
+  text-align: center;
+  vertical-align: middle;
+  width: 120px;
+}
+
+/* ensure the last columns don't collapse when viewport wide */
+.data-table td:nth-last-child(2),
+.data-table td:nth-last-child(1) {
+  white-space: nowrap;
+}
+
+/* ---------- run duration highlight ---------- */
+.run-duration {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-family: "Courier New", Courier, monospace;
+  color: #042c2e;
+  background: linear-gradient(90deg, rgba(56,189,248,0.06), rgba(99,102,241,0.03));
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(59,130,246,0.12);
+  min-width: 88px;
+  text-align: center;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(59,130,246,0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.12s ease;
+}
+.run-duration.finished {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(59,130,246,0.12);
+}
+.run-duration.zero {
+  background: rgba(107,114,128,0.06);
+  border-color: rgba(107,114,128,0.08);
+  color: #374151;
+  font-weight: 600;
+}
+
+/* make status indicator smaller to avoid crowding */
+.status-indicator {
+  font-size: 14px;
+  display: block;
+  line-height: 1;
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 900px) {
+  .protocol-title { width: calc(100% - 200px); top: 8px; font-size: 20px; }
+  .total-time { right: 12px; padding: 8px 12px; }
+  .data-table th, .data-table td { padding: 10px 12px; }
+  .run-button-cell, .tydex-button-cell, .status-cell { width: 100px; }
+}
+@media (max-width: 640px) {
+  .protocol-row { display: flex; flex-direction: column; align-items: stretch; gap: 8px; padding: 10px; }
+  .protocol-title { position: static; transform: none; width: 100%; top: auto; font-size: 20px; pointer-events: auto; }
+  .total-time { position: static; transform: none; justify-content: flex-end; width: 100%; }
+  .data-table { border-spacing: 0 6px; }
+  .data-table th, .data-table td { padding: 8px 10px; font-size: 13px; }
+  .run-duration { font-size: 11px; min-width: 72px; padding: 4px 8px; }
+}
+
+/* ---------- Enhanced color & states for Total time + per-row durations ---------- */
+
+/* gentle pulse animation for "running" state */
+@keyframes pulse-glow {
+  0% { box-shadow: 0 6px 18px rgba(255,170,0,0.12); transform: translateY(0); }
+  50% { box-shadow: 0 14px 34px rgba(255,170,0,0.18); transform: translateY(-2px); }
+  100% { box-shadow: 0 6px 18px rgba(255,170,0,0.12); transform: translateY(0); }
+}
+
+/* Total-time visual variants */
+.total-time {
+  /* subtle base card already exists; add a clear border color */
+  border: 1px solid rgba(99,102,241,0.14);
+}
+
+/* No recorded time (muted) */
+.total-time.zero #total-time-value {
+  background: linear-gradient(180deg, rgba(107,114,128,0.06), rgba(107,114,128,0.03));
+  color: #374151;
+  border-color: rgba(107,114,128,0.08);
+  box-shadow: none;
+}
+
+/* Has recorded time (positive) */
+.total-time.positive #total-time-value {
+  background: linear-gradient(180deg, rgba(16,185,129,0.14), rgba(16,185,129,0.04));
+  color: #064e3b;
+  border-color: rgba(16,185,129,0.18);
+  box-shadow: 0 8px 22px rgba(6,95,70,0.06);
+}
+
+/* Running / updating total (animated amber) */
+.total-time.running {
+  border-color: rgba(250,204,21,0.22);
+  background: linear-gradient(90deg, rgba(255,247,205,0.6), rgba(255,255,255,0.9));
+  animation: pulse-glow 1.6s infinite ease-in-out;
+}
+.total-time.running #total-time-value {
+  background: linear-gradient(180deg, rgba(250,204,21,0.14), rgba(250,204,21,0.04));
+  color: #92400e;
+  border-color: rgba(250,204,21,0.18);
+}
+
+/* Long total time (attention) - e.g., > 4 hours — use manually or via JS */
+.total-time.long #total-time-value {
+  background: linear-gradient(180deg, rgba(249,115,22,0.12), rgba(250,204,21,0.04));
+  color: #7c2d12;
+  border-color: rgba(249,115,22,0.16);
+  box-shadow: 0 10px 28px rgba(249,115,22,0.06);
+}
+
+/* Per-row running state */
+.run-duration.running {
+  background: linear-gradient(90deg, rgba(255,199,92,0.10), rgba(255,247,205,0.02));
+  color: #92400e;
+  border-color: rgba(250,204,21,0.16);
+  animation: pulse-glow 1.4s infinite ease-in-out;
+  box-shadow: 0 10px 22px rgba(250,204,21,0.06);
+}
+
+/* Per-row completed (accented green) - combine with existing .finished */
+.run-duration.finished {
+  background: linear-gradient(90deg, rgba(16,185,129,0.14), rgba(16,185,129,0.04));
+  color: #064e3b;
+  border-color: rgba(16,185,129,0.16);
+  box-shadow: 0 14px 34px rgba(16,185,129,0.06);
+  transform: translateY(-2px);
+}
+
+/* Muted zero state (already present) — make border lighter */
+.run-duration.zero {
+  background: linear-gradient(180deg, rgba(107,114,128,0.04), rgba(255,255,255,0.0));
+  border-color: rgba(107,114,128,0.06);
+  color: #6b7280;
+  box-shadow: none;
+}
+
+/* tiny icon spacing if you add an icon inside chips later */
+.run-duration i { margin-right: 6px; vertical-align: middle; }
+
+/* ensure transitions are smooth */
+#total-time-value,
+.run-duration {
+  transition: all 220ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* Accessibility: ensure sufficient contrast for large totals */
+@media (prefers-contrast: more) {
+  .total-time.positive #total-time-value { box-shadow: none; border-color: #065f46; color: #064e3b; }
+  .run-duration.finished { border-color: #065f46; color: #064e3b; }
+}
+
+/* ===== Protocol controls (improved spacing + left/right layout) ===== */
+.protocol-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* push live/status to the right */
+  gap: 16px;
+  max-width: 1200px;
+  margin: 8px auto 16px;
+  padding: 10px 16px;
+  box-sizing: border-box;
+  width: calc(100% - 36px);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(250,250,252,0.6), rgba(255,255,255,0.9));
+  box-shadow: 0 6px 18px rgba(15,23,42,0.03);
+}
+
+/* left group holds the buttons; allow wrapping when narrow */
+.protocol-controls .controls-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.protocol-controls .controls-left .controls-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* right group holds ETA / live summary / overall progress */
+.protocol-controls .controls-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: 0 0 auto;
+  min-width: 260px; /* reserve space so items don't crowd */
+  justify-content: flex-end;
+}
+
+/* ETA area: keep compact inline box */
+.estimated-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.eta-value {
+  font-family: "Courier New", monospace;
+  padding: 6px 10px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.06);
+  font-weight: 800;
+  min-width: 88px;
+  text-align: center;
+}
+
+/* Live area inline layout: summary + counts + small progress */
+.live-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 220px;
+  max-width: 420px;
+}
+
+/* stack summary + counts vertically inside a compact column */
+.live-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-end;
+  font-size: 13px;
+}
+.live-summary { font-weight: 700; color: #374151; }
+.live-counts  { font-size: 12px; color: #6b7280; font-weight: 700; }
+
+/* overall progress small inline pill */
+.overall-progress {
+  width: 160px;
+  height: 10px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.4);
+  flex: 0 0 auto;
+}
+.overall-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg,#60a5fa,#3b82f6);
+  transition: width 300ms ease;
+  box-shadow: 0 6px 16px rgba(96,165,250,0.12);
+}
+
+/* Give control buttons a minimum gap and ensure icons + text are spaced */
+.control-btn { gap: 10px; padding: 9px 14px; min-width: 110px; }
+
+/* ===== Protocol control buttons: polished pill style ===== */
+.control-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(99,102,241,0.12);
+  background: linear-gradient(180deg,#ffffff,#f7f5ff);
+  color: #3b2150;                 /* dark purple/charcoal */
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  min-height: 40px;
+  min-width: 96px;
+  white-space: nowrap;
+}
+
+/* Icon sizing and color */
+.control-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #6b3a9b;
+  opacity: 0.98;
+}
+
+/* keep text vertically centered */
+.control-btn span { line-height: 1; }
+
+/* Hover / focus */
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(15,23,42,0.08);
+  background: linear-gradient(180deg,#ffffff,#f2efff);
+}
+.control-btn:focus { outline: 3px solid rgba(99,102,241,0.12); outline-offset: 2px; }
+
+/* Disabled look */
+.control-btn.disabled,
+.control-btn[disabled] {
+  opacity: 0.56;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background: linear-gradient(180deg,#f6f6f7,#fafafa);
+}
+
+/* Danger / Stop style */
+.control-btn.danger {
+  background: linear-gradient(180deg,#fff8f8,#fff5f5);
+  color: #7f1d1d;
+  border: 1px solid rgba(220,53,69,0.08);
+}
+.control-btn.danger:hover { background: linear-gradient(180deg,#fff7f7,#fff1f1); }
+
+/* Small compact variant for icon-only controls (if needed) */
+.control-btn.icon-only {
+  padding: 8px;
+  min-width: 40px;
+  width: 40px;
+  justify-content: center;
+}
+
+/* Skip toggle / label tuned to match controls */
+.skip-toggle { /* removed — kept placeholder class to avoid missing-selector errors */ display: none; }
+
+/* ensure left group buttons stay tidy and allow breathing */
+.protocol-controls .controls-left .controls-group {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* reduce overly large min-width on small screens */
+@media (max-width: 880px) {
+  .control-btn { min-width: 90px; padding: 8px 12px; }
+  .control-btn.icon-only { width: 36px; height: 36px; min-width: 36px; }
+}
+
+/* ===== Live status color variants =====
+   Add .state-idle | .state-queued | .state-running | .state-done | .state-failed
+   Toggle one of these classes on .live-area from JS (run-status.js) to change colours.
+*/
+.live-area { padding:6px 10px; border-radius:10px; transition: background-color .18s ease, box-shadow .18s ease; }
+
+/* Idle — subtle neutral */
+.live-area.state-idle {
+  background: linear-gradient(180deg, rgba(243,244,246,0.6), rgba(255,255,255,0.3));
+  border: 1px solid rgba(107,114,128,0.06);
+  box-shadow: none;
+}
+.live-area.state-idle .live-summary { color: #6b7280; }
+.live-area.state-idle .eta-value { border-color: rgba(107,114,128,0.06); background: #fff; color: #374151; }
+
+/* Queued — cool blue */
+.live-area.state-queued {
+  background: linear-gradient(90deg, rgba(59,130,246,0.06), rgba(99,102,241,0.02));
+  border: 1px solid rgba(59,130,246,0.12);
+  box-shadow: 0 6px 18px rgba(59,130,246,0.04);
+}
+.live-area.state-queued .live-summary { color: #1e40af; }
+.live-area.state-queued .eta-value { border-color: rgba(59,130,246,0.12); background: linear-gradient(180deg,#ffffff,#f3f8ff); color:#0b4db2; }
+.live-area.state-queued .overall-progress-bar { background: linear-gradient(90deg,#60a5fa,#3b82f6); }
+
+/* Running — warm amber attention */
+.live-area.state-running {
+  background: linear-gradient(90deg, rgba(245,158,11,0.06), rgba(250,204,21,0.03));
+  border: 1px solid rgba(250,204,21,0.12);
+  box-shadow: 0 8px 22px rgba(250,204,21,0.06);
+}
+.live-area.state-running .live-summary { color: #92400e; font-weight:800; }
+.live-area.state-running .eta-value { border-color: rgba(250,204,21,0.14); background: linear-gradient(180deg,#fffaf0,#fffefc); color:#92400e; }
+.live-area.state-running .overall-progress-bar { background: linear-gradient(90deg,#f59e0b,#f97316); }
+
+/* Done — success green */
+.live-area.state-done {
+  background: linear-gradient(90deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02));
+  border: 1px solid rgba(16,185,129,0.12);
+  box-shadow: 0 8px 22px rgba(16,185,129,0.04);
+}
+.live-area.state-done .live-summary { color: #065f46; }
+.live-area.state-done .eta-value { border-color: rgba(16,185,129,0.12); background: linear-gradient(180deg,#fbfff6,#ffffff); color:#065f46; }
+.live-area.state-done .overall-progress-bar { background: linear-gradient(90deg,#34d399,#10b981); }
+
+/* Failed — alert red */
+.live-area.state-failed {
+  background: linear-gradient(90deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02));
+  border: 1px solid rgba(239,68,68,0.10);
+  box-shadow: 0 8px 22px rgba(239,68,68,0.06);
+}
+.live-area.state-failed .live-summary { color: #9f1239; font-weight:800; }
+.live-area.state-failed .eta-value { border-color: rgba(239,68,68,0.12); background: linear-gradient(180deg,#fff6f6,#ffffff); color:#9f1239; }
+.live-area.state-failed .overall-progress-bar { background: linear-gradient(90deg,#ef4444,#dc2626); }
+
+/* subtle text / count contrast tuning */
+.live-area .live-counts { opacity: 0.95; }
+
+/* small helper: animate overall bar when running */
+.live-area.state-running .overall-progress-bar,
+.live-area.state-queued .overall-progress-bar {
+  transition: width .4s ease, background .2s ease;
+}
+
+/* end of live status color variants */
+
+/* checkbox/select column */
+.select-col { width: 48px; text-align: center; vertical-align: middle; }
+.select-col input.select-row { width: 18px; height: 18px; cursor: pointer; }
+
+/* select-all header spacing */
+.select-all-th { width: 48px; text-align: center; }
+
+/* ensure table rows don't shift when checkbox appears */
+.data-table tbody tr > td:first-child { padding: 12px 8px; }
+
+.queue-badge.stopping {
+  background: linear-gradient(90deg,#fca311,#ff7b00);
+  color: #fff;
+  border-radius: 10px;
+  padding: 4px 8px;
+  font-weight: 800;
+}
+
+/* ========== TYDEX SIDEBAR ========== */
+.tydex-sidebar {
+  position: fixed;
+  right: 20px;
+  top: 90px;
+  bottom: 20px;
+  width: 380px;
+  background: linear-gradient(180deg, #fcfdff 60%, #f8f6ff 100%);
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(16,24,40,0.09), 0 2px 12px rgba(88,44,124,0.09);
+  border: 1.5px solid rgba(15,23,42,0.07);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid rgba(15,23,42,0.05);
+  background: linear-gradient(90deg, rgba(88,44,124,0.07), rgba(88,44,124,0.01));
+}
+
+.sidebar-header h3 {
+  font-weight: 800;
+  color: #2b2b2b;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.btn-icon:hover {
+  background: rgba(88,44,124,0.08);
+}
+
+.tydex-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tydex-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  background: linear-gradient(180deg,#fff,#fcf8ff 95%);
+  border: 1px solid #ece6f5;
+  transition: box-shadow 0.15s;
+}
+
+.tydex-item:hover {
+  box-shadow: 0 3px 10px rgba(88,44,124,0.1);
+}
+
+.tydex-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.tydex-filename {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tydex-meta {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.tydex-open-btn {
+  background: linear-gradient(90deg,#fff,#f3f8ff);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(59,130,246,0.12);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #582C7C;
+  transition: all 0.2s;
+}
+
+.tydex-open-btn:hover {
+  background: #fa893e18;
+  color: #fa893e;
+}
+
+.tydex-preview {
+  padding: 14px 18px;
+  border-top: 1px solid rgba(15,23,42,0.05);
+  background: #f9fafd;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tydex-preview h4 {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2b2b2b;
+}
+
+#tydex-preview-box {
+  flex: 1;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e8e8ee;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  resize: vertical;
+  background: #fff;
+}
+
+.preview-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.preview-actions .btn {
+  flex: 1;
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
+.loading, .empty-state, .error-state {
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.error-state {
+  color: #b91c1c;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .tydex-sidebar {
+    width: 320px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .tydex-sidebar {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin: 20px auto;
+    max-height: 500px;
+  }
+}
+
+.main-with-sidebar {
+  display: flex;
+  gap: 20px;
+  padding-right: 420px; /* Space for fixed sidebar */
+}
+
+.table-area {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 1200px) {
+  .main-with-sidebar {
+    flex-direction: column;
+    padding-right: 0;
+  }
+}
+
+/* ============================================
+   HEADER NAVIGATION BUTTONS (Matching Index.html Style)
+   ============================================ */
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.icon-btn:active {
+    transform: scale(0.95);
+}
+
+.icon-btn:focus {
+    outline: none;
+}
+
+/* Refresh button spinning animation */
+.icon-btn.refreshing i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.logout-btn {
+    background: rgba(239, 68, 68, 0.2) !important;
+    color: #fca5a5 !important;
+}
+
+.logout-btn:hover {
+    background: rgba(239, 68, 68, 0.3) !important;
+    color: #ef4444 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-nav {
+        gap: 10px;
+    }
+    
+    .header-nav .icon-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-nav {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    
+    .header-nav .icon-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================
+   PROJECT STATUS BUTTONS (Footer)
+   ============================================ */
+
+footer {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    border-top: 1px solid rgba(88, 44, 124, 0.1);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 1100; /* ✅ INCREASED FROM 100 TO 1100 (higher than archived toolbar's 1000) */
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
+}
+
+#completeProjectBtn,
+#markInProgressBtn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#completeProjectBtn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+#completeProjectBtn:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+}
+
+#markInProgressBtn {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+#markInProgressBtn:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(245, 158, 11, 0.3);
+}
+
+/* ✅ Add padding to body to prevent archived toolbar from covering footer */
+body {
+    padding-bottom: 80px; /* Space for fixed archived toolbar */
+}
+
+.table-area {
+    padding-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+    footer {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+        margin-top: 30px;
+    }
+    
+    #completeProjectBtn,
+    #markInProgressBtn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    body {
+        padding-bottom: 100px; /* More space on mobile */
+    }
+}
+
+/* Batch File Button Styling */
+.batch-btn {
+    background: linear-gradient(180deg, #f7f5ff, #f2efff) !important;
+    border: 1px solid rgba(107, 58, 155, 0.18) !important;
+    color: #3b2150 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 6px 18px rgba(107, 58, 155, 0.08) !important;
+}
+
+.batch-btn svg {
+    color: #6b3a9b !important;
+    opacity: 0.98 !important;
+}
+
+.batch-btn:hover {
+    background: linear-gradient(180deg, #f2efff, #ede8ff) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 28px rgba(107, 58, 155, 0.14) !important;
+    border-color: rgba(107, 58, 155, 0.24) !important;
+}
+
+/* ============================================
+   VIEW BATCH & VIEW LOGS BUTTONS
+   ============================================ */
+
+.view-batch-btn {
+    background: linear-gradient(180deg, #ffffff, #f3f8ff) !important;
+    border: 1px solid rgba(59, 130, 246, 0.18) !important;
+    color: #1e3a8a !important;
+    font-weight: 700 !important;
+    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.08) !important;
+}
+
+.view-batch-btn svg {
+    color: #3b82f6 !important;
+    stroke: #3b82f6 !important;
+    opacity: 0.98 !important;
+}
+
+.view-batch-btn:hover {
+    background: linear-gradient(180deg, #f3f8ff, #eff6ff) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 28px rgba(59, 130, 246, 0.14) !important;
+    border-color: rgba(59, 130, 246, 0.24) !important;
+}
+
+/* View Logs - Amber/Orange accent */
+.view-logs-btn {
+    background: linear-gradient(180deg, #ffffff, #fffbf5) !important;
+    border: 1px solid rgba(245, 158, 11, 0.18) !important;
+    color: #78350f !important;
+    font-weight: 700 !important;
+    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.08) !important;
+}
+
+.view-logs-btn svg {
+    color: #f59e0b !important;
+    stroke: #f59e0b !important;
+    opacity: 0.98 !important;
+}
+
+.view-logs-btn:hover {
+    background: linear-gradient(180deg, #fffbf5, #fff7ed) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 28px rgba(245, 158, 11, 0.14) !important;
+    border-color: rgba(245, 158, 11, 0.24) !important;
+}
+
+/* Shared active state for all three buttons */
+.batch-btn:active,
+.view-batch-btn:active,
+.view-logs-btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* Shared disabled state */
+.batch-btn:disabled,
+.view-batch-btn:disabled,
+.view-logs-btn:disabled {
+    opacity: 0.56 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+    background: linear-gradient(180deg, #f6f6f7, #fafafa) !important;
+    border-color: rgba(107, 114, 128, 0.12) !important;
+    color: #9ca3af !important;
+}
+
+.batch-btn:disabled svg,
+.view-batch-btn:disabled svg,
+.view-logs-btn:disabled svg {
+    color: #9ca3af !important;
+    stroke: #9ca3af !important;
+    opacity: 0.5 !important;
+}
+
+/* Shared focus states for accessibility */
+.batch-btn:focus,
+.view-batch-btn:focus,
+.view-logs-btn:focus {
+    outline: 3px solid rgba(99, 102, 241, 0.12) !important;
+    outline-offset: 2px !important;
+}
+
+/* Ensure proper sizing and spacing (matching other control buttons) */
+.batch-btn,
+.view-batch-btn,
+.view-logs-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 8px 14px !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease !important;
+    min-height: 40px !important;
+    min-width: 96px !important;
+    white-space: nowrap !important;
+}
+
+/* Icon sizing */
+.batch-btn svg,
+.view-batch-btn svg,
+.view-logs-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Text vertical centering */
+.batch-btn span,
+.view-batch-btn span,
+.view-logs-btn span {
+    line-height: 1 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 880px) {
+    .batch-btn,
+    .view-batch-btn,
+    .view-logs-btn {
+        min-width: 90px !important;
+        padding: 8px 12px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .batch-btn,
+    .view-batch-btn,
+    .view-logs-btn {
+        min-width: 80px !important;
+        padding: 7px 10px !important;
+        font-size: 13px !important;
+    }
+    
+    .batch-btn svg,
+    .view-batch-btn svg,
+    .view-logs-btn svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+}
+
+/* Icon-only variant (if space is tight) */
+.batch-btn.icon-only,
+.view-batch-btn.icon-only,
+.view-logs-btn.icon-only {
+    padding: 8px !important;
+    min-width: 40px !important;
+    width: 40px !important;
+    justify-content: center !important;
+}
+
+.batch-btn.icon-only span,
+.view-batch-btn.icon-only span,
+.view-logs-btn.icon-only span {
+    display: none !important;
+}
+
+/* ============================================
+   FILE VIEWER MODAL (WIDER & MORE VISIBLE)
+   ============================================ */
+
+.file-viewer-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6); /* ✅ Darker backdrop for better contrast */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px); /* ✅ Stronger blur */
+}
+
+.file-viewer-content {
+    background: #ffffff;
+    width: min(1400px, 95vw); /* ✅ INCREASED from 900px to 1400px */
+    max-height: 90vh; /* ✅ INCREASED from 85vh to 90vh */
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18), 0 8px 20px rgba(15, 23, 42, 0.12); /* ✅ Stronger shadow */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(15, 23, 42, 0.12); /* ✅ Stronger border */
+}
+
+.file-viewer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px; /* ✅ INCREASED padding */
+    background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+    border-bottom: 2px solid rgba(15, 23, 42, 0.08); /* ✅ Thicker border */
+}
+
+.file-viewer-header h3 {
+    margin: 0;
+    font-size: 19px; /* ✅ INCREASED from 17px */
+    font-weight: 700;
+    color: #0f172a; /* ✅ Darker text */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-viewer-header h3 span {
+    font-weight: 700; /* ✅ INCREASED weight */
+    color: #6b3a9b;
+    background: linear-gradient(180deg, #f7f5ff, #f2efff);
+    padding: 6px 14px; /* ✅ INCREASED padding */
+    border-radius: 8px;
+    border: 1px solid rgba(107, 58, 155, 0.16); /* ✅ Stronger border */
+    font-size: 16px; /* ✅ INCREASED from 15px */
+}
+
+.file-viewer-actions {
+    display: flex;
+    gap: 10px; /* ✅ INCREASED gap */
+}
+
+.file-viewer-actions .btn-icon {
+    width: 40px; /* ✅ INCREASED from 36px */
+    height: 40px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #ffffff, #f9fafb);
+    border: 1px solid rgba(15, 23, 42, 0.12); /* ✅ Stronger border */
+    color: #374151;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 8px rgba(15, 23, 42, 0.06); /* ✅ Stronger shadow */
+}
+
+.file-viewer-actions .btn-icon:hover {
+    background: linear-gradient(180deg, #f9fafb, #f3f4f6);
+    transform: translateY(-2px); /* ✅ More pronounced lift */
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12); /* ✅ Stronger hover shadow */
+    border-color: rgba(15, 23, 42, 0.18);
+}
+
+.file-viewer-actions .btn-icon:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+}
+
+.file-viewer-actions .btn-icon svg {
+    width: 20px; /* ✅ INCREASED from 18px */
+    height: 20px;
+    stroke: #374151;
+    fill: none;
+}
+
+/* Copy button success state */
+.file-viewer-actions .btn-icon.copied {
+    background: linear-gradient(180deg, #d1fae5, #a7f3d0) !important;
+    border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+.file-viewer-actions .btn-icon.copied svg {
+    stroke: #059669 !important;
+}
+
+.file-viewer-body {
+    flex: 1;
+    overflow: auto;
+    padding: 0;
+    background: #fafbfc;
+}
+
+.file-viewer-body pre {
+    margin: 0;
+    padding: 28px 32px; /* ✅ INCREASED from 20px 24px */
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px; /* ✅ INCREASED from 13px */
+    line-height: 1.8; /* ✅ INCREASED from 1.7 for better readability */
+    color: #0f172a; /* ✅ DARKER text for better visibility */
+    white-space: pre-wrap;
+    word-break: break-word;
+    background: #fafbfc;
+    overflow-x: auto;
+    font-weight: 500; /* ✅ ADDED weight for better visibility */
+}
+
+/* Syntax highlighting for batch files (light theme) - ENHANCED */
+.file-viewer-body pre .comment {
+    color: #047857; /* ✅ DARKER green */
+    font-style: italic;
+    font-weight: 600; /* ✅ ADDED weight */
+}
+
+.file-viewer-body pre .command {
+    color: #1e3a8a; /* ✅ DARKER blue */
+    font-weight: 800; /* ✅ INCREASED from 700 */
+}
+
+.file-viewer-body pre .path {
+    color: #92400e; /* ✅ DARKER orange */
+    font-weight: 600; /* ✅ ADDED weight */
+}
+
+/* Loading state */
+.file-viewer-body pre.loading {
+    text-align: center;
+    padding: 50px; /* ✅ INCREASED padding */
+    color: #6b7280;
+    background: #ffffff;
+    font-size: 16px; /* ✅ INCREASED font size */
+}
+
+/* Error state - MORE VISIBLE */
+.file-viewer-body pre.error {
+    color: #b91c1c; /* ✅ DARKER red */
+    padding: 50px; /* ✅ INCREASED padding */
+    text-align: center;
+    background: #fff5f5;
+    border: 2px dashed #f87171; /* ✅ THICKER border */
+    margin: 24px; /* ✅ INCREASED margin */
+    border-radius: 10px; /* ✅ INCREASED radius */
+    font-size: 15px; /* ✅ INCREASED font size */
+    font-weight: 600; /* ✅ ADDED weight */
+}
+
+/* Responsive */
+@media (max-width: 1600px) {
+    .file-viewer-content {
+        width: min(1200px, 94vw); /* ✅ Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 1200px) {
+    .file-viewer-content {
+        width: min(1000px, 93vw);
+    }
+}
+
+@media (max-width: 900px) {
+    .file-viewer-content {
+        width: min(800px, 92vw);
+    }
+    
+    .file-viewer-body pre {
+        font-size: 13px;
+        padding: 20px 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .file-viewer-content {
+        width: 95vw;
+        max-height: 92vh;
+        border-radius: 12px;
+    }
+    
+    .file-viewer-header {
+        padding: 14px 18px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .file-viewer-header h3 {
+        font-size: 16px;
+        flex: 1 1 100%;
+    }
+    
+    .file-viewer-header h3 span {
+        font-size: 14px;
+        padding: 4px 10px;
+    }
+    
+    .file-viewer-actions {
+        gap: 6px;
+    }
+    
+    .file-viewer-actions .btn-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .file-viewer-body pre {
+        padding: 18px 20px;
+        font-size: 12px;
+        line-height: 1.7;
+    }
+}
+
+/* Scrollbar styling for modal (light theme) - MORE VISIBLE */
+.file-viewer-body::-webkit-scrollbar {
+    width: 14px; /* ✅ INCREASED from 10px */
+    height: 14px;
+}
+
+.file-viewer-body::-webkit-scrollbar-track {
+    background: #e5e7eb; /* ✅ DARKER track */
+    border-radius: 7px;
+}
+
+.file-viewer-body::-webkit-scrollbar-thumb {
+    background: #9ca3af; /* ✅ DARKER thumb */
+    border-radius: 7px;
+    border: 3px solid #e5e7eb;
+}
+
+.file-viewer-body::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; /*  DARKER on hover */
+}
+
+/* Firefox scrollbar - MORE VISIBLE */
+.file-viewer-body {
+    scrollbar-width: auto; /*  CHANGED from thin to auto (wider) */
+    scrollbar-color: #9ca3af #e5e7eb; /*  DARKER colors */
+}
+
+/* Code line numbers (optional enhancement) - MORE VISIBLE */
+.file-viewer-body pre.with-line-numbers {
+    counter-reset: line;
+    padding-left: 64px; /*  INCREASED from 56px */
+    position: relative;
+}
+
+.file-viewer-body pre.with-line-numbers::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 56px; /*  INCREASED from 48px */
+    background: linear-gradient(180deg, #e5e7eb, #d1d5db); /*  DARKER gradient */
+    border-right: 2px solid #9ca3af; /*  THICKER, DARKER border */
+}
+
+.file-viewer-body pre.with-line-numbers .line {
+    display: block;
+    counter-increment: line;
+}
+
+.file-viewer-body pre.with-line-numbers .line::before {
+    content: counter(line);
+    display: inline-block;
+    width: 48px; /*  INCREASED from 40px */
+    margin-left: -56px;
+    text-align: right;
+    padding-right: 14px;
+    color: #6b7280; /*  DARKER line numbers */
+    font-size: 13px; /*  INCREASED from 12px */
+    font-weight: 600; /*  ADDED weight */
+    user-select: none;
+}
+
+/* Empty state - MORE VISIBLE */
+.file-viewer-body .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 50px; /* INCREASED padding */
+    color: #6b7280;
+    background: #ffffff;
+}
+
+.file-viewer-body .empty-state svg {
+    width: 80px; /*  INCREASED from 64px */
+    height: 80px;
+    margin-bottom: 20px; /*  INCREASED margin */
+    opacity: 0.4; /*  INCREASED opacity */
+}
+
+.file-viewer-body .empty-state h4 {
+    margin: 0 0 10px 0;
+    font-size: 18px; /*  INCREASED from 16px */
+    font-weight: 700; /*  INCREASED weight */
+    color: #374151;
+}
+
+.file-viewer-body .empty-state p {
+    margin: 0;
+    font-size: 15px; /* INCREASED from 14px */
+    color: #6b7280;
+}
+
+/* Animation for modal appearance */
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: scale(0.96); /*  Slightly different scale */
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.file-viewer-modal {
+    animation: fadeIn 0.2s ease;
+}
+
+.file-viewer-content {
+    animation: fadeInModal 0.3s cubic-bezier(0.2, 0.9, 0.3, 1); /*  Slightly longer animation */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Accessibility improvements */
+.file-viewer-modal:focus-within .file-viewer-content {
+    outline: 3px solid rgba(99, 102, 241, 0.2); /*  More visible outline */
+    outline-offset: -3px;
+}
+
+.file-viewer-actions .btn-icon:focus {
+    outline: 3px solid rgba(99, 102, 241, 0.5); /*  Thicker outline */
+    outline-offset: 2px;
+}
+
+/* Print styles (if user wants to print the file content) */
+@media print {
+    .file-viewer-modal {
+        position: static;
+        background: none;
+    }
+    
+    .file-viewer-header,
+    .file-viewer-actions {
+        display: none;
+    }
+    
+    .file-viewer-body {
+        background: white;
+        max-height: none;
+    }
+    
+    .file-viewer-body pre {
+        font-size: 11pt; /* Slightly larger for print */
+        line-height: 1.5;
+        color: #000; /*  Pure black for print */
+    }
+}
+
+/* End of File Viewer Modal styling */
